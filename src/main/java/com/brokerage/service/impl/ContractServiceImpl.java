@@ -45,4 +45,9 @@ public class ContractServiceImpl implements ContractService{
         listRolesResponse.setRoles(list);
         return listRolesResponse;
     }
+
+    @Override
+    public List<Contract> getAll() {
+        return contractRepository.getAll();
+    }
 }

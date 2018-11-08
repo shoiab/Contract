@@ -3,6 +3,8 @@ package com.brokerage.service;
 import com.brokerage.model.Contract;
 import com.brokerage.payload.ListRolesResponse;
 
+import java.util.List;
+
 public interface ContractService {
 
     Contract findById(long id);
@@ -12,4 +14,6 @@ public interface ContractService {
     Contract create(Contract contract);
 
     ListRolesResponse getRoles();
+
+    List<Contract> getAll();
 }

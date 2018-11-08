@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -57,5 +58,18 @@ public class ContractDAOImpl implements ContractDAO{
     public Contract create(Contract contract) {
         entityManager.persist(contract);
         return contract;
+    }
+
+    @Override
+    public List<Contract> getAll() {
+        List<Contract> contracts = new ArrayList<>();
+        try{
+            contracts = entityManager.createNamedQuery("findAll", Contract.class)
+                    .getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.info("No contracts found");
+        }
+        return contracts;
     }
 }

@@ -23,6 +23,10 @@ import java.util.Date;
                 name = "findByPO",
                 query = "from Contract c where c.poNumber = :po"
         ),
+        @NamedQuery(
+                name = "findAll",
+                query = "from Contract c ORDER BY c.contractDate DESC"
+        )
 })
 public class Contract extends DateAudit {
 
