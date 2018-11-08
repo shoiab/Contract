@@ -19,19 +19,12 @@ public class Client {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         Document document = null;
         try {
-            //Document is not auto-closable hence need to close it separately
             document = new Document(PageSize.A4);
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(
-                    new File(TITLE + PDF_EXTENSION)));
-            HeaderFooter event = new HeaderFooter();
-            event.setHeader("Test Report");
-            writer.setPageEvent(event);
             PdfWriter.getInstance(document, out);
             document.open();
-            //PDFCreator.addMetaData(document, TITLE);
             PDFCreator.addTitlePage(document, TITLE);
             PDFCreator.addContent(document, dataObj);
-        } catch (DocumentException | FileNotFoundException e) {
+        } catch (DocumentException e) {
             e.printStackTrace();
             System.out.println("FileNotFoundException occurs.." + e.getMessage());
         } finally {
